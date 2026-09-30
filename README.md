@@ -14,7 +14,7 @@ its exact TTD position.
 It is the time-travel counterpart of [Heapscape](https://github.com/kkokosa/heapspace), a 3D atlas
 of .NET memory dumps.
 
-![](docs/assets/Demo.mp4)
+https://github.com/user-attachments/assets/849f9ede-dbdd-42ef-8fed-6a25c8e2e61d
 
 ## Features
 
