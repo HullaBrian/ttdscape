@@ -1,0 +1,36 @@
+# Build output and dependencies
+build/
+out/
+node_modules/
+client/dist/
+
+# Traces and everything derived from them. Recordings embed the recording machine's environment
+# (user name, paths, environment variables) and may be malware; never commit them.
+*.run
+*.ttd
+*.idx
+*.out
+*.dmp
+ReplayAPI.md
+traces/*
+!traces/README.md
+fixtures/traces/*
+!fixtures/traces/README.md
+
+# Analysis caches, CAPA work directories (memory snapshots) and reports
+cache/
+capa-work/
+*.ttd.json
+calls.ndjson
+
+# Local reference copy of Heapscape (upstream: https://github.com/kkokosa/heapspace)
+heapspace-main/
+
+# Editors and OS
+.vs/
+.vscode/
+.idea/
+*.user
+Thumbs.db
+Desktop.ini
+.DS_Store

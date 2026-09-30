@@ -1,0 +1,24 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "x64",
+      "displayName": "MSVC x64 (Visual Studio generator)",
+      "generator": "Visual Studio 18 2026",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/../build/analyzer"
+    },
+    {
+      "name": "vs2022-x64",
+      "inherits": "x64",
+      "generator": "Visual Studio 17 2022"
+    }
+  ],
+  "buildPresets": [
+    { "name": "release", "configurePreset": "x64", "configuration": "RelWithDebInfo" },
+    { "name": "debug", "configurePreset": "x64", "configuration": "Debug" }
+  ],
+  "testPresets": [
+    { "name": "release", "configurePreset": "x64", "configuration": "RelWithDebInfo", "output": { "outputOnFailure": true } }
+  ]
+}

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" data-theme="prism">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TTDscape</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div id="viewport" aria-label="Interactive 3D memory atlas"></div>
+  <header>
+    <div class="brand"><span class="mark">T</span><div>TTDscape<small>TIME TRAVEL MEMORY ATLAS / TTD + Three.js</small></div></div>
+    <div class="toolbar">
+      <span id="trace-name" class="local">LOCAL ONLY</span>
+      <button id="open">Open trace</button>
+      <button id="home">Overview</button>
+      <button id="play">Play [P]</button>
+      <button id="fly">Enter flight [F]</button>
+    </div>
+  </header>
+
+  <!-- Rails, tabs and panels are built by the features in client/features. -->
+  <div id="left-rail" class="rail left"></div>
+  <div id="right-rail" class="rail right"></div>
+
+  <div id="clock" hidden aria-live="off" title="The playhead: the state after this event. Event numbers are the timeline axis; the TTD position (Sequence:Steps) can be used in WinDbg with !tt.">
+    <div class="line1"><span class="evt"></span><span class="pct"></span></div>
+    <div class="line2"><span class="pos"></span><span class="kind"></span></div>
+    <div class="line3 play"></div>
+  </div>
+
+  <dialog id="open-dialog" class="panel" aria-labelledby="open-title">
+    <div class="dialog-heading"><h2 id="open-title">Open a TTD trace</h2><button id="close-open">Close</button></div>
+    <label>Trace file (.run / .ttd) on this machine<input id="trace-path" type="text" placeholder="C:\traces\app01.run" spellcheck="false"></label>
+    <div id="trace-list" class="results"></div>
+    <div class="options">
+      <label>Stack depth<select id="stack-depth"><option>16</option><option selected>48</option><option>128</option></select></label>
+      <label class="check"><input id="symbols" type="checkbox" checked> Symbolize stacks (DbgHelp, _NT_SYMBOL_PATH)</label>
+    </div>
+    <div class="options">
+      <label class="check"><input id="record-calls" type="checkbox" checked> Record calls into exports (call beams)</label>
+      <label class="check"><input id="record-args" type="checkbox" checked> Decode their arguments (ttd-capa signatures)</label>
+      <label class="check"><input id="record-capa" type="checkbox" checked> Match CAPA rules (ttd-capa-cpp)</label>
+      <label class="check" title="One more replay: writes per block and page over time (Color blocks by → Activity) and code that ran after being written. Adds about 20–70% to the analysis time."><input id="record-activity" type="checkbox"> Record memory activity (writes, write-then-execute)</label>
+      <label class="check" title="Keeps each heap block's first 4 KiB, as last seen, for content search in the Find tab. This puts memory of the traced process (possibly malware) in the analysis cache; see SECURITY.md."><input id="record-snapshots" type="checkbox"> Snapshot block contents for search (stores sample memory)</label>
+    </div>
+    <button id="analyze" class="primary">Analyze</button>
+    <p id="status" role="status">Ready.</p>
+    <progress id="progress" hidden max="100"></progress>
+    <h2>Analyses</h2>
+    <div id="analyses"></div>
+  </dialog>
+
+  <div id="app-error" role="alert" hidden></div>
+  <div id="welcome"><span class="eyebrow">FROM EVERY INSTRUCTION TO A LANDSCAPE</span><h2>Your process,<br>through time.</h2><p>heap blocks / regions / views / images / stacks — at any point of the recording</p></div>
+  <div id="tooltip" hidden></div>
+  <div id="timeline-tip" hidden></div>
+  <div id="crosshair" hidden>+</div>
+  <div id="flight-hint" data-speed="normal" hidden>Normal flight | Space toggle slow | Hold Shift fast | G focus | X clears | F flight</div>
+  <div id="timeline"></div>
+  <footer><span id="event">No trace loaded</span><span id="counts"></span></footer>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

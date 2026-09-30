@@ -1,0 +1,24 @@
+# Viewer data layer, server and client build. The analyzer needs the TTD runtime (installed with
+# `winget install Microsoft.TimeTravelDebugging`), which hosted runners do not provide; build and test
+# it locally (see CONTRIBUTING.md).
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  node:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build

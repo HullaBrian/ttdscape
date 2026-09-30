@@ -1,0 +1,11 @@
+* text=auto
+
+# Windows scripts keep CRLF
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+
+# Binary data
+*.bin binary
+*.png binary
+*.run binary
+*.idx binary
