@@ -6,7 +6,7 @@
 //   ttdscape-analyzer symbolize <outDir> [--symbol-path P]
 //   ttdscape-analyzer serve   <trace.run> <outDir> [--symbol-path P]   (NDJSON queries on stdin)
 #include "engine.h"
-#include "out/json.h"
+#include "json/json.h"
 #include "probe.h"
 #include "symbols/symbolizer.h"
 

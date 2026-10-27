@@ -1,6 +1,6 @@
 #include "check.h"
-#include "out/json.h"
-#include "out/writer.h"
+#include "json/json.h"
+#include "json/writer.h"
 #include "pe/recorded_pe.h"
 
 #include <cstring>

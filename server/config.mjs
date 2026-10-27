@@ -22,7 +22,7 @@ export function loadConfig(env = process.env) {
     cacheDir,
     // The analyzer command; extra elements are leading arguments (used by tests: node fake-analyzer.mjs).
     analyzer,
-    // Part of the cache key: bump it (with kAnalyzerVersion in analyzer/src/out/writer.h) whenever
+    // Part of the cache key: bump it (with kAnalyzerVersion in analyzer/src/json/writer.h) whenever
     // the analyzer's output changes, or re-analyzing silently reopens stale cached results.
     analyzerVersion: env.TTDSCAPE_ANALYZER_VERSION ?? '0.3.1',
     staticDir: path.resolve(env.TTDSCAPE_STATIC ?? path.join(repoRoot, 'client', 'dist')),

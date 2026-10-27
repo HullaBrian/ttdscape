@@ -48,7 +48,7 @@ reconfigure CMake once (`cmake build\analyzer`), because it is picked up by a gl
 - A running server must be restarted after server or analyzer changes. One started before an update
   keeps running the old code (its file whitelist and cache key), so new files return 404.
 - **When the analyzer's output changes, bump the version** in `server/config.mjs`
-  (`analyzerVersion`) and `analyzer/src/out/writer.h` (`kAnalyzerVersion`). Otherwise "Analyze"
+  (`analyzerVersion`) and `analyzer/src/json/writer.h` (`kAnalyzerVersion`). Otherwise "Analyze"
   reopens stale cached results.
 - Analyses are cached by trace, options and analyzer version. New analysis options change the cache
   key, so old analyses lack new files, and the viewer must handle that.
@@ -79,7 +79,7 @@ samples may be malware. Integration tests skip whatever is missing.
 | Replay pass: CALL/RET shadow stack, hooked heap/VM entries, calls into exports, argument decoding | `analyzer/src/replay/capture.cpp`, `shadow_stack.h`, `call_args.*` |
 | Export tables of all modules | `analyzer/src/exports.cpp` |
 | Ordering by position, heap/VM models, mapping calls to the event axis | `analyzer/src/model/build.cpp`, `call_times.h`, `heap_model.*`, `vm_model.*` |
-| Record layouts (binary contract with the client) | `analyzer/src/model/types.h`, `analyzer/src/out/writer.cpp`, `client/trace-reader.js` |
+| Record layouts (binary contract with the client) | `analyzer/src/model/types.h`, `analyzer/src/json/writer.cpp`, `client/trace-reader.js` |
 | API argument decoder vendored from ttd-capa-cpp (Apache-2.0, unmodified except `ttdutils.*`) | `analyzer/third_party/ttdcapa/` |
 | Jobs, cache key, result file whitelist | `server/jobs.mjs` (`RESULT_FILES`, `normalizeOptions`) |
 | CAPA pass (ttdcapa-extract + capa-cpp, rows positioned on the event axis) | `server/capa.mjs` → `capa.json` |

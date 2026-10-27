@@ -24,7 +24,7 @@ npm run build
 - Read `docs/viewer-architecture.md` before changing the viewer. New capabilities are features in
   `client/features/`, not additions to `main.js`.
 - If the analyzer's output changes, bump the version in `server/config.mjs` and
-  `analyzer/src/out/writer.h`, so cached analyses are not reused.
+  `analyzer/src/json/writer.h`, so cached analyses are not reused.
 - Match the surrounding style. C++ builds warning-free at `/W4`.
 - Never add traces, memory dumps or analysis caches to the repository (see `SECURITY.md`).
 

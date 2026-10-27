@@ -7,7 +7,7 @@
 
 namespace ttds {
 
-// ---- Output record types. Binary layouts are fixed; see out/writer.cpp and client/trace-reader.js.
+// ---- Output record types. Binary layouts are fixed; see json/writer.cpp and client/trace-reader.js.
 
 enum class EventKind : uint8_t
 {

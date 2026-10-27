@@ -1,6 +1,6 @@
 # Build output and dependencies
 build/
-out/
+/out/
 node_modules/
 client/dist/
 

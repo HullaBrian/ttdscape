@@ -12,7 +12,7 @@
 //
 // Memory contents are sample data: never log them. Diagnostics go to stderr without bytes.
 #include "engine.h"
-#include "out/json.h"
+#include "json/json.h"
 #include "serve/json_in.h"
 #include "serve/memory_query.h"
 #include "symbols/symbolizer.h"
